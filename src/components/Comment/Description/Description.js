@@ -5,16 +5,14 @@ const Description = ({content, video, expanded}) => {
     const videoRef = useRef();
     useEffect(() => {
         if (videoRef.current) {
-            if (expanded) {
-                videoRef.current.play();
-            } else {
+            if (!expanded) {
                 videoRef.current.pause();
             }
         }
     }, [expanded]);
     return (
         <div className={Style.descriptionWrapper}>
-            <video ref={videoRef} src={`https://blog-demo-create.herokuapp.com${video}`} controls autoPlay/>
+            <video ref={videoRef} src={`https://blog-demo-create.herokuapp.com${video}`} controls autoPlay playsInline />
             <p>{content}</p>
         </div>
     );
