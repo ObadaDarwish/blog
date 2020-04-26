@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as Style from './App.module.scss';
+import {Container} from '@material-ui/core';
+import useFetchComments from "./hooks/useFetchAPI";
+import Comment from './components/Comment/Comment';
+import LoadingIndicator from "./components/LoadingIndicator/LoadingIndicator";
+import Alert from "./components/Alert/Alert";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [data, loading, error, setError] = useFetchComments('https://blog-demo-create.herokuapp.com/comments');
+    const errorHandler = () => {
+        setError(false);
+    };
+    return (
+        <Container maxWidth="sm" className={Style.appContainer}>
+            {loading ? (
+                <LoadingIndicator/>
+            ) : (
+                data && data.map((comment) => {
+                    return (
+                        <Comment key={comment.id} {...comment}/>
+                    );
+                })
+            )}
+            {error && <Alert severity={'error'} message={error} handleClose={errorHandler}/>}
+        </Container>
+    );
+};
 
 export default App;

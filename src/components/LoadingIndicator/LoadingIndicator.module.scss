@@ -1,0 +1,7 @@
+@import "../../assets/styles/_mixins";
+
+.LoadingContainer {
+  width: 100%;
+  min-height: 100px;
+  @include flex_center(row);
+}

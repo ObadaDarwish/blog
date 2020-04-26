@@ -1,0 +1,13 @@
+@import "../../assets/styles/_mixins";
+
+.expansionPanel {
+  margin: 10px 0;
+
+  .title {
+    min-width: 100px;
+  }
+  .content {
+    margin-left: 50px;
+  }
+
+}

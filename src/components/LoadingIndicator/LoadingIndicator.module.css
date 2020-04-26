@@ -1,0 +1,9 @@
+.LoadingContainer {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center; }
+
+/*# sourceMappingURL=LoadingIndicator.module.css.map */

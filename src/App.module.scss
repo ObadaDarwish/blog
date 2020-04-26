@@ -1,0 +1,8 @@
+@import "assets/styles/_variables";
+
+.appContainer {
+  height: auto;
+  min-height: 100vh;
+  background: $dark-gray;
+  padding: 10px 15px;
+}
